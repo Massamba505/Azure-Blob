@@ -8,6 +8,25 @@
 <body>
   <h1>Express</h1>
   <p>Welcome to Express</p>
+  <div id="photos">
+
+  </div>
 </body>
+<script>
+  fetch("/photos")
+  .then(res=>res.json())
+  .then(data=>{
+    console.log(data);
+    const photosCon = document.getElementById("photos");
+    for(let url of data){
+      const img = document.createElement("img");
+      img.src = url;
+      photosCon.appendChild(img);
+    }
+  })
+  .catch(errr=>console.log(errr));
+
+</script>
 
 </html>
+
